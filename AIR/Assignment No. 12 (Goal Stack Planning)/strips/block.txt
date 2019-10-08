@@ -1,0 +1,15 @@
+Initial state: At(Tower1), BlockAt(A, Tower1), OnBottom(A), OnTop(A) , BlockAt(B, Tower2), OnBottom(B), OnTop(B) 
+Goal state: On(A, B), OnBottom(B), OnTop(A)
+
+Actions:
+  Go(From, To)
+  Preconditions: At(From), !At(To)
+  Postconditions: At(To), !At(From)
+
+  PlaceOn(Block1, Block2, Tower)
+  Preconditions: At(Tower), Holding(Block1), BlockAt(Block2, Tower), OnTop(Block2)
+  Postconditions: !Holding(Block1), !OnTop(Block2), BlockAt(Block1, Tower), OnTop(Block1), On(Block1, Block2)
+
+  PickUpLast(Block1, Tower)
+  Preconditions: At(Tower), BlockAt(Block1, Tower), OnTop(Block1), OnBottom(Block1)
+  Postconditions: Holding(Block1), !BlockAt(Block1, Tower), !OnTop(Block1), !OnBottom(Block1), Empty(Tower)
